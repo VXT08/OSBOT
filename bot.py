@@ -18,6 +18,7 @@ async def help(ctx):
      await ctx.send("mudrost - даёт совет для помощи природе")
      await ctx.send("biomem - скидывает случайный мем о природе")
      await ctx.send("chacha - советую лично это проверить ;)")
+     await ctx.send("перед каждой командой пиши $"
 
 @bot.command()
 async def biomem(ctx):
