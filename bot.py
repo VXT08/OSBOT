@@ -13,12 +13,13 @@ async def on_ready():
     print(f'We have logged in as {bot.user}')
 
 @bot.command()
-async def help(ctx):
+async def helpme(ctx):
      await ctx.send("Комманд немного, вот список:")
      await ctx.send("mudrost - даёт совет для помощи природе")
      await ctx.send("biomem - скидывает случайный мем о природе")
      await ctx.send("chacha - советую лично это проверить ;)")
-     await ctx.send("перед каждой командой пиши $"
+     await ctx.send("перед каждой командой пиши $")
+     await ctx.send("clear - удаляет последние 5 сообщений (кол-во сообщений можно регулировать, дописав число) пример: сlear 10")
 
 @bot.command()
 async def biomem(ctx):
@@ -31,7 +32,7 @@ async def biomem(ctx):
     await ctx.send(file=picture)
 
 @bot.command()
-async def mem(ctx):
+async def chacha(ctx):
     with open('chacha/img1.jpg', 'rb') as f:
         picture = discord.File(f)
     await ctx.send(file=picture)
@@ -46,5 +47,10 @@ async def mudrost(ctx):
      random_word = random.choice(words_list)
      
      await ctx.send(random_word)
+
+@bot.command()
+@commands.has_permissions(manage_messages=True)
+async def clear(ctx, amount=5): 
+    await ctx.channel.purge(limit=amount)
 
 bot.run("token")
